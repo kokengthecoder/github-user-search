@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import SearchBar from './SearchBar';
+import ListUser from './ListUser';
 
 class HomeSearch extends Component {
 	render() {
 		return (
 			<div>
 				<SearchBar />
+				<ListUser />
 			</div>
 		)
 	}
 }
 
-function mapStateToProps(state) {
-	console.log(state);
-	return { users: state.users }
-}
-
-export default connect(mapStateToProps)(HomeSearch);
+export default HomeSearch;

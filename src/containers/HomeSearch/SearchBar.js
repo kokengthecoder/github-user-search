@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Form, Input, Button, Icon } from 'semantic-ui-react';
+import { Form, Input } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import { searchUser } from '../../actions/index';
 
@@ -11,9 +11,10 @@ class SearchBar extends Component {
 		this.state = { value: '' };
 
 		this.onInputChange = this.onInputChange.bind(this);
-
+		this.onFormSubmit = this.onFormSubmit.bind(this);
 	}
 
+	// handle input changes and set to state for calling action
 	onInputChange(e) {
 		this.setState({
 			value: e.target.value
@@ -21,7 +22,10 @@ class SearchBar extends Component {
 	}
 
 	onFormSubmit(e){
+		// prevent website from refreshing
 		e.preventDefault();
+
+		// call the action to fetch this user data
 		this.props.searchUser(this.state.value);
 	}
 
@@ -33,6 +37,7 @@ class SearchBar extends Component {
 					onChange={this.onInputChange}
 					value={this.state.value} 
 					placeholder="Search by username..."
+					action={{icon: 'search'}}
 				/>
 			</Form>
 		)
