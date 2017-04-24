@@ -1,0 +1,1 @@
+This project is using [ReduxSimpleStarter](https://github.com/StephenGrider/ReduxSimpleStarter) as boilerplate. 
