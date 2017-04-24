@@ -1,36 +1,20 @@
-import React, { Component } from 'react'
-import { Search } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import SearchBar from './SearchBar';
 
 class HomeSearch extends Component {
-
-	constructor(props) {
-		super(props)
-
-		this.state = {
-			isloading: false,
-			results: [],
-			value: ''
-		}
-	}
-
-	handleSearchChange = (e, value) => {
-		this.setState({ isloading: true, value })
-	}
-
 	render() {
-
-		const { isloading, value, results } = this.state
-
 		return (
-			<Search 
-				loading={isloading}
-        onSearchChange={this.handleSearchChange}
-				results={results}
-				value={value}
-				{...this.props}
-			/>
+			<div>
+				<SearchBar />
+			</div>
 		)
 	}
 }
 
-export default HomeSearch;
+function mapStateToProps(state) {
+	console.log(state);
+	return { users: state.users }
+}
+
+export default connect(mapStateToProps)(HomeSearch);
