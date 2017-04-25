@@ -7,7 +7,7 @@ class ListUser extends Component {
 
 	renderList(user) {
 		return (
-			<List.Item key={user.id} as={Link} >
+			<List.Item key={user.id} as={Link} to={`/users/${user.login}`}>
 				<Image avatar src={user.avatar_url} />
 				<List.Content>
 					<List.Description>
@@ -29,7 +29,7 @@ class ListUser extends Component {
 } 
 
 function mapStateToProps({users}) {
-	return { users }
+	return { users: users.searched }
 }
 
 export default connect(mapStateToProps)(ListUser);

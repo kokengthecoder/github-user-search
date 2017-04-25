@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
-import HomeSearch from './HomeSearch'
+import React, { Component } from 'react';
+import HomeSearch from './HomeSearch';
+import ShowUser from './ShowUser';
 
 export default class App extends Component {
   render() {
     return (
     	<div>
-	      <h1>Github User Search</h1>
-	      <HomeSearch />
+	      {this.props.children}
     	</div>
-    );
+	  );
   }
 }
+
