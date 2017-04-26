@@ -4,6 +4,8 @@ import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { fetchUser, fetchRepo } from '../../actions/index';
 import UserRepo from '../../components/UserRepo';
+import UserInfo from '../../components/UserInfo';
+import { Grid, Button, List, Segment, Divider } from 'semantic-ui-react';
 
 class ShowUser extends Component {
 
@@ -23,28 +25,24 @@ class ShowUser extends Component {
 		}
 	}
 
-	renderProps(user) {
-		if (user) {
-			// list all user's information 
-			const list = Object.keys(user).map((prop) => {
-				return <li><strong>{prop}:</strong> {user[prop]}</li>
-			});
-
-			return list;
-		}
-	}
-
 	render() {
 
 		return (
-			<div>
-				<Link to="/">Back</Link>
-				<h2>User details</h2>
-				<ul>
-					{this.renderProps(this.props.user)}
-				</ul>
-				<UserRepo repos={this.props.repos}/>
-			</div>
+			<Grid padded relaxed>
+				<Grid.Column width={1} />
+				<Grid.Column width={3}>
+					<h1>User details</h1>
+					<h3>{this.props.user? this.props.user.name : ''}</h3>
+					<Button as={Link} to="/">Back</Button>
+				</Grid.Column>
+				<Grid.Column width={8}>
+					<UserInfo user={this.props.user} />
+				</Grid.Column>
+				<Grid.Column width={1} />
+				<Grid.Column width={3}>
+					<UserRepo repos={this.props.repos} />
+				</Grid.Column>
+			</Grid>
 		)
 	}
 }
